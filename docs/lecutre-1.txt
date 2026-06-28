@@ -1,0 +1,2 @@
+1. Go is a compiled language like rust 
+2. 
