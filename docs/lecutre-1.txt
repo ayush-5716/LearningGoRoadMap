@@ -1,2 +1,116 @@
-1. Go is a compiled language like rust 
-2. 
+1. Go is a compiled language like rust.
+2. We can use go build "classname.go" to build an exe which. 
+This will convert the go code to binary code and produce executable exe which can run on any device, even if go is not installed there.
+In interpreted language , at runtime this conversion is done. Python is interpreted. 
+3. Garbage Collection 
+In java , there is automatic GC , which means , the JVM handles the garbage collection, JVM in itself is heavy on ram usage 
+In Rust or C++ , this is done manually by the user, to be handled , and it is faster and light on ram
+Go lies in between both, as the Garbage Collection is automatic but also there is no VM, the garbage colleciton is logic is present inside every compiled Go codeS
+
+4. Integer types 
+
+int int8 int16 int32 int64
+uint uint8 uint16 uint32
+
+uint8 -> largest number that can be stored is 255 , 8 bits
+uint16 -> largest is about 65,000
+
+byte -> alias for uint8 (will be used for json related stuffs)
+
+rune -> alias for int32 , represnts a unicode point 
+
+5. variable declarations -
+
+var smsSendingLimit int = 0
+var costPerSMS float64 = 0.0
+var hasPermission bool = false
+var username string = "hello"
+
+Short variable declarations - automatically assigns the type, still static and strict 
+
+smsSendingLimit := 0
+costPerSMS := 0.0
+hasPermission := true
+username := "ayush" (also works if you have var as prefix )
+
+Multiple values can be declared on the same line :- 
+
+mileage , company := 4535, "tesla"
+
+6. Printing Type of a value 
+
+fmt.Printf("Tpye is %T" , smsSendingLimit ) NOTE: keep in mind, fmt.Printf is used instead of fmt.PrintT
+
+7. Converting variables from one type to another
+
+To convert int to float 
+primaryNumber := 90
+floatNumber := float64(primaryNumber)
+
+8. constants
+
+const premiumPlan = "PremiumPlan" (they do not support shorter forms of writing ) 
+
+in case of constant, the variables needs to know its value before compile time, so in compile time, the compiler needs to know its value.
+In case of computation of constant like -
+const num1 = 34
+const num2 = 94
+const sum = num1 + num2
+
+const sum will be avaluated at runtime only 
+
+9. string formatting -
+
+fmt.Println - simply prints as string
+fmt.Printf - used for formated Printing
+fmt.Sprintf() - used to return a formatted string (for ex. to store it in a variable)
+
+const name = "Sual Goodman"
+const age = 30.5
+
+msg := fmt.Sprintf("Hi %s , your age is %f", name, age)
+
+fmt.Println("this is the message : ", msg)
+
+10. Printing float upto certain decimal points 
+
+msg := fmt.Sprintf("Hi %s , your age is %.1f", name, age)
+
+11. Conditions 
+
+const age = 60
+if age >= 60 {
+    fmt.Println("You are older than 80")
+} else {
+    fmt.Println("You are still young my friend")
+}
+
+In line vars for if condition 
+
+if answer := multiply(10, 5); answer > 100 {
+    fmt.Println("The answer is big ", answer)
+} else {
+    fmt.Println("The answer is smaller than hundred: ", answer)
+}
+
+scope is limited just to this if conditions
+
+12. functions 
+
+func multiply(x int, y int) int {
+	return x * y
+}
+
+13. returning multiple values from a functions
+
+func operations(x int, y int) (int, int, int) {
+	return x * y, x - y, x + y
+}
+
+To reference all the values usage - 
+
+mul, sub, sum := operations(10, 5)
+
+To ignore some and refrence some, for example to ignore sub in this case - 
+
+ mul , _, sum := operations(10, 5)
