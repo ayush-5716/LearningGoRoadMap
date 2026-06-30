@@ -1,16 +1,51 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 
-	if _, sub, sum := operations(10, 5); sub > 100 && sum > 20 {
-		fmt.Println("The answer is big ", sub)
+	answer, newError := divide(4, 0)
+
+	if newError == nil {
+		fmt.Println(answer)
 	} else {
-		fmt.Println("The answer is smaller than hundred: ", sum)
+		fmt.Println(newError)
 	}
+
+	newCar := car{
+		Make:  "Hello",
+		Model: "Bye",
+		Dimension: dimension{
+			Height: 234,
+			Width:  834,
+		},
+	}
+
+	msg := fmt.Sprintf(
+		"The make of the car is %s, its model is %s and it of the height %d and width %d",
+		newCar.Make, newCar.Model, newCar.Dimension.Height, newCar.Dimension.Width)
+
+	fmt.Println(msg)
 }
 
-func operations(x int, y int) (int, int, int) {
-	return x * y, x - y, x + y
+func divide(a, b int) (answer int, newError error) {
+	if b == 0 {
+		return 0, errors.New("Divisior cannot be zero")
+	}
+
+	return a / b, nil
+}
+
+type car struct {
+	Make      string
+	Model     string
+	Dimension dimension
+}
+
+type dimension struct {
+	Width  int
+	Height int
 }

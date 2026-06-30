@@ -1,0 +1,75 @@
+14. We can name the return values as well like - 
+
+func getCoords() (x, y int ){
+    return x,y
+}
+
+In this case, we dont even need to explicitly give the return values , for ex
+
+func getCoords() (x, y int ){
+    //x and y are automatically initialized as 0 ,0 (default int value)
+    return
+}
+
+is also same as the above code. 
+
+15. Returning error 
+
+We can return an error to handle errors, to identiy that something not intended has happened- 
+
+func divide(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("Divisior cannot be zero")
+	}
+	return a / b, nil
+}
+
+When we call this function, we can check that the error value is null or not and process further 
+
+16. Structs 
+
+They are key value pairs . 
+
+type car struct {
+    Make string
+    Model string
+    Height int
+    Width int
+}
+
+instantiation will look like this - 
+
+newCar := car{
+		Make:   "Honda",
+		Model:  "City",
+		Height: 24,
+		Width:  23,
+	}
+
+16. Nested Struct
+
+type car struct {
+    Make string
+    Model string
+    Dimension dimension
+}
+
+type dimension struct{
+    Height int
+    Widht int 
+}
+
+To instantiate - 
+
+NewCar := car {
+    Make : "Honda",
+    Model : "Civic",
+    Dimension : dimension{
+        Height : 203,
+        Widht : 434,
+    },
+}
+
+17. Embedded struct - Different from nested struct 
+
+
